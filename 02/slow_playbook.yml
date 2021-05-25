@@ -1,0 +1,27 @@
+---
+# YAML documents begin with the document separator ---
+# The minus in YAML this indicates a list item. The Playbook contains a list
+# of plays, with each play being a dictionary
+
+- name: 'Asynchronous and Parallel execution of the play'
+
+  # Target: where our play will run and options it will run with
+  hosts: all
+
+  # Task: the list of tasks that will be executed within the playbook
+  tasks:       
+     - name: Task1
+       command: /bin/sleep 5
+       when: ansible_hostname == 'ansnode1'
+     - name: Task2
+       command: /bin/sleep 5
+       when: ansible_hostname == 'ansnode2'
+     - name: Task3
+       command: /bin/sleep 5
+       when: ansible_hostname == 'ansnode3'
+     - name: Task4
+       command: /bin/sleep 5
+       when: ansible_hostname == 'ansnode4'
+
+# Three dots indicate the end of a YAML document
+...

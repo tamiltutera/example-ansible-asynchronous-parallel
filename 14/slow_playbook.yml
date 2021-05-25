@@ -1,0 +1,28 @@
+---
+# YAML documents begin with the document separator ---
+# The minus in YAML this indicates a list item. The Playbook contains a list
+# of plays, with each play being a dictionary
+
+- name: 'Asynchronous and Parallel execution of the play'
+
+  # Target: where our play will run and options it will run with
+  hosts: all
+  gather_facts: false
+  strategy: free
+  # Task: the list of tasks that will be executed within the playbook
+  tasks:       
+     - name: Task1
+       command: "/bin/sleep {{ 10 | random }}"
+
+     - name: Task2
+       command: "/bin/sleep {{ 10 | random }}"
+
+     - name: Task3
+       command: "/bin/sleep {{ 10 | random }}"
+
+     - name: Task4
+       command: "/bin/sleep {{ 10 | random }}"
+
+
+# Three dots indicate the end of a YAML document
+...
